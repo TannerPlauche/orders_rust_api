@@ -244,26 +244,3 @@ cargo watch -x run
 # Run with debug logging
 RUST_LOG=debug cargo run
 ```
-
-## 🚀 Production Deployment
-
-### Environment Configuration
-
-Create a `.env` file or set environment variables:
-
-```bash
-export DATABASE_URL="sqlite:production.db"
-export RUST_LOG="info"
-export PORT="3000"
-```
-
-### Build for Production
-
-```bash
-cargo build --release
-./target/release/rustapi
-```
-
----
-
-**Built with ❤️ and Rust** 🦀
