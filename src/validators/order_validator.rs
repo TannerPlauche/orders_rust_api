@@ -7,15 +7,21 @@ use serde::{Serialize};
 use serde_json::json;
 use crate::utils::Order;
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+/// Validation error response
 pub struct ValidationError {
+    /// Error message describing what went wrong
     pub error: String,
+    /// The field that caused the validation error (if applicable)
     pub field: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+/// Server error response  
 pub struct ServerError {
+    /// Error type
     pub error: String,
+    /// Detailed error message
     pub message: String,
 }
 

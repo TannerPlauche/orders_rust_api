@@ -2,6 +2,7 @@ mod handlers;
 mod routes;
 mod validators;
 mod utils;
+mod openapi;
 
 use axum::serve;
 use routes::create_router;

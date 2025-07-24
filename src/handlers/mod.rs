@@ -5,7 +5,8 @@ pub use handlers::{
     get_order_by_id, 
     update_order_by_id,
     update_order_status,
-    delete_order_by_id
+    delete_order_by_id,
+    StatusUpdate
 };
 
 #[cfg(test)]

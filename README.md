@@ -15,9 +15,12 @@ cd rustapi
 
 Server will be available at `http://localhost:3000`
 
+**📖 View API Documentation**: http://localhost:3000/swagger-ui
+
 ## 🚀 Features
 
 - **RESTful API**: Complete CRUD operations for order management
+- **OpenAPI Documentation**: Interactive Swagger UI for API exploration and testing
 - **Database Persistence**: SQLite database with connection pooling
 - **Input Validation**: Comprehensive validation with detailed error messages
 - **Error Handling**: Structured error responses with appropriate HTTP status codes
@@ -50,7 +53,24 @@ curl -X PATCH http://localhost:3000/orders/ORDER_ID/status
 curl -X DELETE http://localhost:3000/orders/ORDER_ID
 ```
 
-## API Endpoints
+**💡 Tip**: You can also test all endpoints interactively using the Swagger UI at http://localhost:3000/swagger-ui
+
+## 📚 API Documentation
+
+### Interactive Documentation
+Once the server is running, you can access the interactive API documentation:
+
+- **Swagger UI**: http://localhost:3000/swagger-ui
+- **OpenAPI JSON**: http://localhost:3000/docs
+
+The Swagger UI provides:
+- Interactive API testing
+- Complete endpoint documentation
+- Request/response examples
+- Schema definitions
+- Try-it-out functionality for all endpoints
+
+### API Endpoints
 
 
 | Method | Endpoint | Description |
@@ -104,11 +124,15 @@ cd rustapi
 
 The dependencies will be automatically installed when building the project. Key dependencies include:
 
+### Key Dependencies
+
 - `axum` - Web framework
 - `tokio` - Async runtime
 - `sqlx` - Database toolkit
 - `serde` - Serialization
 - `uuid` - Unique identifiers
+- `utoipa` - OpenAPI documentation generation
+- `utoipa-swagger-ui` - Swagger UI integration
 
 ### 3. Build the Project
 

@@ -5,11 +5,16 @@ use crate::validators::{ApiError, ServerError};
 // Database configuration  
 const DATABASE_URL: &str = "sqlite::memory:";
 
-#[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow)]
+#[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow, utoipa::ToSchema)]
+/// Order structure representing a customer order
 pub struct Order {
+    /// Unique identifier for the order
     pub id: u32,
+    /// Name of the item being ordered
     pub item: String,
+    /// Current status of the order (pending, processing, shipped, delivered, cancelled)
     pub status: String,
+    /// Quantity of items ordered
     pub quantity: u32,
 }
 

@@ -5,6 +5,8 @@ use axum::{
     Router,
 };
 use serde_json::json;
+use utoipa::OpenApi;
+use utoipa_swagger_ui::SwaggerUi;
 
 use crate::handlers::{ // bring in all handler functions
     get_orders,
@@ -15,6 +17,7 @@ use crate::handlers::{ // bring in all handler functions
     delete_order_by_id,
 };
 use crate::utils::DbPool;
+use crate::openapi::ApiDoc;
 
 // Fallback handler for unmatched routes
 async fn path_not_found() -> (StatusCode, Json<serde_json::Value>) {
@@ -29,6 +32,7 @@ async fn path_not_found() -> (StatusCode, Json<serde_json::Value>) {
 
 pub fn create_router(db_pool: DbPool) -> Router {
     Router::new()
+        .merge(SwaggerUi::new("/swagger-ui").url("/docs", ApiDoc::openapi()))
         .route("/orders", get(get_orders).post(add_order))
         .route(
             "/orders/:id",
