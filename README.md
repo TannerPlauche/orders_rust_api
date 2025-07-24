@@ -15,7 +15,7 @@ cd rustapi
 
 Server will be available at `http://localhost:3000`
 
-**📖 View API Documentation**: http://localhost:3000/swagger-ui
+**📖 View API Documentation**: http://localhost:3000/docs
 
 ## 🚀 Features
 
@@ -28,32 +28,7 @@ Server will be available at `http://localhost:3000`
 - **Async**: Built with Tokio async runtime for high performance
 - **Type Safety**: Leverages Rust's type system for reliability
 
-## 🧪 Quick Test Commands
-
-Once the server is running, test the API with these curl commands:
-
-```bash
-# Create a new order
-curl -X POST http://localhost:3000/orders 
-  -H "Content-Type: application/json" 
-  -d '{"product": "Test Product", "quantity": 2, "price": 29.99}'
-
-# Get all orders
-curl http://localhost:3000/orders
-
-# Get specific order (replace ORDER_ID with actual ID)
-curl http://localhost:3000/orders/ORDER_ID
-
-# Update order status
-curl -X PATCH http://localhost:3000/orders/ORDER_ID/status 
-  -H "Content-Type: application/json" 
-  -d '{"status": "shipped"}'
-
-# Delete an order
-curl -X DELETE http://localhost:3000/orders/ORDER_ID
-```
-
-**💡 Tip**: You can also test all endpoints interactively using the Swagger UI at http://localhost:3000/swagger-ui
+**💡 Tip**: You can test all endpoints interactively using the Swagger UI at http://localhost:3000/swagger-ui
 
 ## 📚 API Documentation
 
@@ -205,137 +180,6 @@ cargo test utils::tests
 cargo test -- --nocapture
 ```
 
-## 📚 API Usage Examples
-
-### 1. Create a New Order
-
-```bash
-curl -X POST http://localhost:3000/orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": 1,
-    "item": "Laptop Computer",
-    "status": "pending",
-    "quantity": 2
-  }'
-```
-
-**Response:**
-```json
-{
-  "id": 1,
-  "item": "Laptop Computer", 
-  "status": "pending",
-  "quantity": 2
-}
-```
-
-### 2. Get All Orders
-
-```bash
-curl http://localhost:3000/orders
-```
-
-**Response:**
-```json
-[
-  {
-    "id": 1,
-    "item": "Laptop Computer",
-    "status": "pending", 
-    "quantity": 2
-  }
-]
-```
-
-### 3. Get Order by ID
-
-```bash
-curl http://localhost:3000/orders/1
-```
-
-**Response:**
-```json
-{
-  "id": 1,
-  "item": "Laptop Computer",
-  "status": "pending",
-  "quantity": 2
-}
-```
-
-### 4. Update Order Status
-
-```bash
-curl -X PATCH http://localhost:3000/orders/1/status \
-  -H "Content-Type: application/json" \
-  -d '{"status": "shipped"}'
-```
-
-**Response:**
-```json
-{
-  "id": 1,
-  "item": "Laptop Computer",
-  "status": "shipped",
-  "quantity": 2
-}
-```
-
-### 5. Update Full Order
-
-```bash
-curl -X PUT http://localhost:3000/orders/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": 1,
-    "item": "Gaming Laptop",
-    "status": "processing",
-    "quantity": 3
-  }'
-```
-
-### 6. Delete an Order
-
-```bash
-curl -X DELETE http://localhost:3000/orders/1
-```
-
-**Response:**
-```json
-{
-  "id": 1,
-  "item": "Gaming Laptop",
-  "status": "processing", 
-  "quantity": 3
-}
-```
-
-## ❌ Error Responses
-
-### Validation Error (400 Bad Request)
-```json
-{
-  "error": "Item name cannot be empty",
-  "field": "item"
-}
-```
-
-### Not Found Error (404 Not Found)
-```json
-{
-  "error": "Order not found"
-}
-```
-
-### Server Error (500 Internal Server Error)
-```json
-{
-  "error": "Database error",
-  "message": "Failed to retrieve orders"
-}
-```
-
 ## 🗂️ Project Structure
 
 ```
@@ -382,13 +226,6 @@ rustapi/
 
 ## 🔧 Development
 
-### Adding New Features
-
-1. **Add new routes** in `src/routes/routes.rs`
-2. **Implement handlers** in `src/handlers/handlers.rs`
-3. **Add validation** in `src/validators/`
-4. **Write tests** for all new functionality
-
 ### Database Changes
 
 The database schema is automatically created on startup. To modify:
@@ -426,59 +263,6 @@ export PORT="3000"
 cargo build --release
 ./target/release/rustapi
 ```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Database permission errors**: Ensure write permissions to the directory
-2. **Port already in use**: Change the port in `main.rs` or kill existing processes
-3. **Compilation errors**: Ensure Rust 1.70+ is installed
-
-### Debugging
-
-```bash
-# Run with debug output
-RUST_LOG=debug cargo run
-
-# Check for common issues
-cargo check
-
-# Format code
-cargo fmt
-
-# Lint code  
-cargo clippy
-```
-
-## 📈 Performance
-
-- **Async I/O**: Non-blocking operations for high concurrency
-- **Connection Pooling**: Efficient database connection management
-- **Zero-Copy**: Minimal allocations with Rust's ownership system
-- **Type Safety**: Compile-time guarantees prevent runtime errors
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes and add tests
-4. Ensure all tests pass (`cargo test`)
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Review the test files for usage examples
-3. Open an issue on GitHub with detailed information
 
 ---
 
