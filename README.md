@@ -60,8 +60,8 @@ curl -X DELETE http://localhost:3000/orders/ORDER_ID
 ### Interactive Documentation
 Once the server is running, you can access the interactive API documentation:
 
-- **Swagger UI**: http://localhost:3000/swagger-ui
-- **OpenAPI JSON**: http://localhost:3000/docs
+- **Swagger UI**: http://localhost:3000/docs
+- **OpenAPI JSON**: http://localhost:3000/api-docs/openapi.json
 
 The Swagger UI provides:
 - Interactive API testing

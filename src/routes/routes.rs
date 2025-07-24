@@ -32,7 +32,7 @@ async fn path_not_found() -> (StatusCode, Json<serde_json::Value>) {
 
 pub fn create_router(db_pool: DbPool) -> Router {
     Router::new()
-        .merge(SwaggerUi::new("/swagger-ui").url("/docs", ApiDoc::openapi()))
+        .merge(SwaggerUi::new("/docs").url("/api-docs/openapi.json", ApiDoc::openapi()))
         .route("/orders", get(get_orders).post(add_order))
         .route(
             "/orders/:id",
